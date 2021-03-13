@@ -8,13 +8,13 @@ import NetflixLoading from './components/img/loading.gif';
 
 export default () => {
 
-  const [movieList, setMovieList] = useState([]);
+  const [MovieList, setMovieList] = useState([]);
   const [FeaturedData, setFeaturedData] = useState(null)
   const [blackHeader, setBlackHeader] = useState(false)
 
   useEffect(()=>{
-   const loadall = async () => {
     //pegando a lista total
+    const loadall = async () => {
     let list = await Tmdb.getHomeList();
     setMovieList(list);
 
@@ -60,7 +60,7 @@ export default () => {
       }
 
         <section className="lists">
-         {movieList.map((item, key)=>(
+         {MovieList.map((item, key)=>(
          <MovieRow key={key} title={item.title} items={item.items}/>
        ))}
        </section>
@@ -72,7 +72,7 @@ export default () => {
                  
        </footer>
 
-       {movieList.length <=0 &&
+       {MovieList.length <=0 &&
        <div className="loading">
          <img src={NetflixLoading} atl="Carregando" />
        </div>
